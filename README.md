@@ -30,13 +30,13 @@ DBotScore values: `0` = unknown, `1` = benign, `2` = suspicious, `3` = malicious
 - Connection failures (DNS, timeout) are caught and surfaced as readable error messages.
 - Malformed API responses (missing fields) fail gracefully with `raise_for_status()`.
 
-### Retry Logic (Senior)
+### Retry Logic
 
 - Exponential backoff on failed requests: retries up to 3 times with delays of 1s, 2s, 4s.
 - Only retries on transient errors (5xx, connection timeouts). 4xx errors are not retried.
 - Implemented directly in the `Client._request()` method so all commands benefit.
 
-### Test Module (Senior)
+### Test Module
 
 - `!test-module` makes a lightweight API call (`GET /health`) to verify:
   - The `base_url` is reachable
